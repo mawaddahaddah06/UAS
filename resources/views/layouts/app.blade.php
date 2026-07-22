@@ -279,6 +279,14 @@
             <li class="nav-heading">Master Data</li>
 
             <li class="nav-item">
+                <a class="nav-link {{ request()->routeIs('product.*') ? '' : 'collapsed' }}"
+                    href="{{ route('product.index') }}">
+                    <i class='bx bx-box'></i>
+                    <span>Barang / Produk</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
                 <a class="nav-link {{ request()->routeIs('category.*') ? '' : 'collapsed' }}"
                     href="{{ route('category.index') }}">
                     <i class='bx bx-category'></i>
