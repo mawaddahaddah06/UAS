@@ -6,7 +6,17 @@
     <div class="col-md-8">
         <h4 class="fw-bold mb-3">{{ $user->name }}</h4>
         <div class="mb-3">
-            <span class="badge bg-primary fs-6">{{ $user->role }}</span>
+            @if($user->role === 'Superadmin')
+                <span class="badge bg-danger fs-6">Superadmin</span>
+            @elseif($user->role === 'Warehouse Manager')
+                <span class="badge bg-primary fs-6">Warehouse Manager</span>
+            @elseif($user->role === 'Staff Gudang')
+                <span class="badge bg-info fs-6">Staff Gudang</span>
+            @elseif($user->role === 'Auditor')
+                <span class="badge bg-secondary fs-6">Auditor</span>
+            @else
+                <span class="badge bg-dark fs-6">{{ $user->role }}</span>
+            @endif
         </div>
         <div class="list-group list-group-flush">
             <div class="list-group-item px-0 border-0">
@@ -16,6 +26,16 @@
                     </div>
                     <div class="col-8 fw-semibold">
                         {{ $user->email }}
+                    </div>
+                </div>
+            </div>
+            <div class="list-group-item px-0 border-0">
+                <div class="row">
+                    <div class="col-4 text-muted">
+                        <i class='bx bx-phone me-2'></i>Telepon
+                    </div>
+                    <div class="col-8 fw-semibold">
+                        {{ $user->phone ?? '-' }}
                     </div>
                 </div>
             </div>

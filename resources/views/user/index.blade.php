@@ -27,7 +27,19 @@
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
-                            <td>{{ $user->role }}</td>
+                            <td>
+                                @if($user->role === 'Superadmin')
+                                    <span class="badge bg-danger">Superadmin</span>
+                                @elseif($user->role === 'Warehouse Manager')
+                                    <span class="badge bg-primary">Warehouse Manager</span>
+                                @elseif($user->role === 'Staff Gudang')
+                                    <span class="badge bg-info">Staff Gudang</span>
+                                @elseif($user->role === 'Auditor')
+                                    <span class="badge bg-secondary">Auditor</span>
+                                @else
+                                    <span class="badge bg-dark">{{ $user->role }}</span>
+                                @endif
+                            </td>
                             <td>
                                 <button type="button" class="btn btn-info btn-sm btn-detail"
                                     data-route="{{ route('user.show', $user) }}">

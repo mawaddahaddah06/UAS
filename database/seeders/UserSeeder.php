@@ -18,11 +18,25 @@ class UserSeeder extends Seeder
                 'name' => 'Tamus Tahir',
                 'email' => 'tamus@gmail.com',
                 'role' => 'Superadmin',
+                'phone' => '081234567890',
             ],
             [
-                'name' => 'Joh Doe',
-                'email' => 'admin@gmail.com',
-                'role' => 'Admin',
+                'name' => 'Budi Santoso',
+                'email' => 'manager@gmail.com',
+                'role' => 'Warehouse Manager',
+                'phone' => '081234567891',
+            ],
+            [
+                'name' => 'Siti Rahma',
+                'email' => 'staff@gmail.com',
+                'role' => 'Staff Gudang',
+                'phone' => '081234567892',
+            ],
+            [
+                'name' => 'Ahmad Hidayat',
+                'email' => 'auditor@gmail.com',
+                'role' => 'Auditor',
+                'phone' => '081234567893',
             ],
         ];
 
@@ -35,6 +49,7 @@ class UserSeeder extends Seeder
                 'name' => $user['name'],
                 'email' => $user['email'],
                 'role' => $user['role'],
+                'phone' => $user['phone'] ?? null,
             ]);
         }
     }
