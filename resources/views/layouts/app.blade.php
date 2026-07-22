@@ -328,6 +328,14 @@
                 </a>
             </li>
 
+            <li class="nav-item">
+                <a class="nav-link {{ request()->routeIs('stock-adjustment.*') ? '' : 'collapsed' }}"
+                    href="{{ route('stock-adjustment.index') }}">
+                    <i class='bx bx-adjust text-warning'></i>
+                    <span>Stok Opname / Adjust</span>
+                </a>
+            </li>
+
             <li class="nav-heading">Sistem & Pengguna</li>
 
             <li class="nav-item">

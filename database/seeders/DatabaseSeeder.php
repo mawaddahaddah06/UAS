@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
             ProductSeeder::class,
             StockInSeeder::class,
             StockOutSeeder::class,
+            StockAdjustmentSeeder::class,
         ]);
     }
 }
