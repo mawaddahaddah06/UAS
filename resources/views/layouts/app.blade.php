@@ -276,6 +276,34 @@
                 </a>
             </li>
 
+            <li class="nav-heading">Master Data</li>
+
+            <li class="nav-item">
+                <a class="nav-link {{ request()->routeIs('category.*') ? '' : 'collapsed' }}"
+                    href="{{ route('category.index') }}">
+                    <i class='bx bx-category'></i>
+                    <span>Kategori</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link {{ request()->routeIs('supplier.*') ? '' : 'collapsed' }}"
+                    href="{{ route('supplier.index') }}">
+                    <i class='bx bx-truck'></i>
+                    <span>Supplier</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link {{ request()->routeIs('warehouse.*') ? '' : 'collapsed' }}"
+                    href="{{ route('warehouse.index') }}">
+                    <i class='bx bx-store-alt'></i>
+                    <span>Gudang</span>
+                </a>
+            </li>
+
+            <li class="nav-heading">Sistem & Pengguna</li>
+
             <li class="nav-item">
                 <a class="nav-link {{ request()->routeIs('setting.*') ? '' : 'collapsed' }}"
                     href="{{ route('setting.index') }}">

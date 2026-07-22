@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\WarehouseController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\UserController;
 
@@ -25,6 +28,9 @@ Route::middleware('auth')->group(function () {
     Route::put('/dashboard/update', [DashboardController::class, 'update'])->name('dashboard.update');
 
     Route::resource('/user', UserController::class)->middleware('role:Superadmin');
+    Route::resource('/category', CategoryController::class);
+    Route::resource('/supplier', SupplierController::class);
+    Route::resource('/warehouse', WarehouseController::class);
 
     Route::get('/setting', [SettingController::class, 'index'])->name('setting.index');
     Route::put('/setting/{setting}/update', [SettingController::class, 'update'])->name('setting.update');
