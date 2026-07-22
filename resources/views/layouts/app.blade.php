@@ -310,6 +310,16 @@
                 </a>
             </li>
 
+            <li class="nav-heading">Transaksi Stok</li>
+
+            <li class="nav-item">
+                <a class="nav-link {{ request()->routeIs('stock-in.*') ? '' : 'collapsed' }}"
+                    href="{{ route('stock-in.index') }}">
+                    <i class='bx bx-down-arrow-circle text-success'></i>
+                    <span>Barang Masuk</span>
+                </a>
+            </li>
+
             <li class="nav-heading">Sistem & Pengguna</li>
 
             <li class="nav-item">
