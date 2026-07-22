@@ -8,6 +8,7 @@ use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\WarehouseController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\StockInController;
+use App\Http\Controllers\StockOutController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\UserController;
 
@@ -35,6 +36,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('/warehouse', WarehouseController::class);
     Route::resource('/product', ProductController::class);
     Route::resource('/stock-in', StockInController::class);
+    Route::resource('/stock-out', StockOutController::class);
 
     Route::get('/setting', [SettingController::class, 'index'])->name('setting.index');
     Route::put('/setting/{setting}/update', [SettingController::class, 'update'])->name('setting.update');

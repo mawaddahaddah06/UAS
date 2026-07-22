@@ -320,6 +320,14 @@
                 </a>
             </li>
 
+            <li class="nav-item">
+                <a class="nav-link {{ request()->routeIs('stock-out.*') ? '' : 'collapsed' }}"
+                    href="{{ route('stock-out.index') }}">
+                    <i class='bx bx-up-arrow-circle text-danger'></i>
+                    <span>Barang Keluar</span>
+                </a>
+            </li>
+
             <li class="nav-heading">Sistem & Pengguna</li>
 
             <li class="nav-item">
