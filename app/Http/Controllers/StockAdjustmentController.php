@@ -97,10 +97,23 @@ class StockAdjustmentController extends Controller
                 'approved_by_user_id' => Auth::id() ?? 1,
             ]);
 
-            // Apply stock adjustment directly to product physical stock
+            // Apply stock adjustment directly to product physical stock & Audit Log
             $product = Product::findOrFail($stockAdjustment->product_id);
+            $qtyBefore = $product->stock_quantity;
             $product->update([
                 'stock_quantity' => $stockAdjustment->actual_quantity,
+            ]);
+            $qtyAfter = $product->stock_quantity;
+
+            \App\Models\StockLog::create([
+                'product_id' => $product->id,
+                'user_id' => Auth::id() ?? 1,
+                'reference_number' => $stockAdjustment->adjustment_code,
+                'type' => 'ADJUSTMENT',
+                'quantity_before' => $qtyBefore,
+                'quantity_change' => $stockAdjustment->difference,
+                'quantity_after' => $qtyAfter,
+                'notes' => 'Penyesuaian Stok Opname (Reason: ' . $stockAdjustment->reason . ')',
             ]);
 
             DB::commit();

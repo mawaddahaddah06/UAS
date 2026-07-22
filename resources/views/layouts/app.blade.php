@@ -336,6 +336,14 @@
                 </a>
             </li>
 
+            <li class="nav-item">
+                <a class="nav-link {{ request()->routeIs('stock-log.*') ? '' : 'collapsed' }}"
+                    href="{{ route('stock-log.index') }}">
+                    <i class='bx bx-history text-info'></i>
+                    <span>Kartu Stok & Audit Trail</span>
+                </a>
+            </li>
+
             <li class="nav-heading">Sistem & Pengguna</li>
 
             <li class="nav-item">

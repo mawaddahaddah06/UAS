@@ -77,9 +77,22 @@ class StockInController extends Controller
                     'subtotal' => $subtotal,
                 ]);
 
-                // Increment Product Stock
+                // Increment Product Stock & Audit Log
                 $product = Product::findOrFail($item['product_id']);
+                $qtyBefore = $product->stock_quantity;
                 $product->increment('stock_quantity', $item['quantity']);
+                $qtyAfter = $product->fresh()->stock_quantity;
+
+                \App\Models\StockLog::create([
+                    'product_id' => $product->id,
+                    'user_id' => Auth::id() ?? 1,
+                    'reference_number' => $transactionCode,
+                    'type' => 'IN',
+                    'quantity_before' => $qtyBefore,
+                    'quantity_change' => $item['quantity'],
+                    'quantity_after' => $qtyAfter,
+                    'notes' => 'Penerimaan barang masuk dari supplier',
+                ]);
             }
 
             $header->update(['total_amount' => $totalAmount]);

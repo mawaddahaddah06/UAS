@@ -83,9 +83,22 @@ class StockOutController extends Controller
                     'subtotal' => $subtotal,
                 ]);
 
-                // Decrement Product Stock
+                // Decrement Product Stock & Audit Log
                 $product = Product::findOrFail($item['product_id']);
+                $qtyBefore = $product->stock_quantity;
                 $product->decrement('stock_quantity', $item['quantity']);
+                $qtyAfter = $product->fresh()->stock_quantity;
+
+                \App\Models\StockLog::create([
+                    'product_id' => $product->id,
+                    'user_id' => Auth::id() ?? 1,
+                    'reference_number' => $transactionCode,
+                    'type' => 'OUT',
+                    'quantity_before' => $qtyBefore,
+                    'quantity_change' => -$item['quantity'],
+                    'quantity_after' => $qtyAfter,
+                    'notes' => 'Pengeluaran barang ke divisi ' . $request->recipient_department,
+                ]);
             }
 
             $header->update(['total_amount' => $totalAmount]);
